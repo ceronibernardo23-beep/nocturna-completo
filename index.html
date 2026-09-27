@@ -1,46 +1,211 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>NOCTURNA 3D</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Import Map do Three.js -->
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
-        }
-    }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOCTURNA</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="crosshair">+</div>
+<canvas id="game"></canvas>
 
-    <div id="hud">
-        NOCTURNA<br>
-        WASD = andar | MOUSE = olhar | ESC = sair
+<div id="hud">
+
+  <div class="box">
+    <span>VIDA</span>
+    <b id="life">100</b>
+  </div>
+
+  <div class="box">
+    <span>FASE</span>
+    <b id="phase">1</b>
+  </div>
+
+  <div class="box objectiveBox">
+    <span>OBJETIVO</span>
+    <b id="objective">---</b>
+  </div>
+
+  <div class="box">
+    <span>LANTERNA</span>
+    <b id="lamp">LIGADA (C)</b>
+  </div>
+
+</div>
+
+<div id="flashCode" class="hidden"></div>
+
+<div id="message" class="hidden"></div>
+
+
+<!-- TELA INICIAL -->
+
+<div id="startScreen" class="overlay">
+
+  <div class="panel">
+
+    <h1>NOCTURNA</h1>
+
+    <p id="startText">
+      WASD para andar<br>
+      Mouse para olhar<br>
+      C para ligar/desligar a lanterna<br>
+      E para interagir<br>
+      ESPAÇO para usar o pulso na Fase 3
+    </p>
+
+    <button id="startBtn">
+      ENTRAR
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- CÓDIGO DA PORTA -->
+
+<div id="codeScreen" class="overlay hidden">
+
+  <div class="panel small">
+
+    <h2>PORTA</h2>
+
+    <p>Digite o código:</p>
+
+    <input
+      id="codeInput"
+      maxlength="6"
+      autocomplete="off"
+      inputmode="numeric"
+    >
+
+    <button id="codeBtn">
+      ABRIR
+    </button>
+
+    <p id="codeResult"></p>
+
+    <button id="closeCode">
+      FECHAR
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- FINAL DA NOCTURNA -->
+
+<div id="endingScreen" class="overlay hidden">
+
+  <!-- VERDADE -->
+
+  <div id="endingTruth" class="endingPage">
+
+    <h1>A VERDADE</h1>
+
+    <p>
+      Você finalmente entendeu.
+    </p>
+
+    <p>
+      Os lugares.<br>
+      As criaturas.<br>
+      O assobio.<br>
+      As portas.
+    </p>
+
+    <p class="bigText">
+      VOCÊ CRIOU A NOCTURNA.
+    </p>
+
+    <p>
+      Tudo começou na sua mente.
+      Mas alguma coisa fez aquilo se tornar real.
+    </p>
+
+    <button id="endingNext">
+      CONTINUAR
+    </button>
+
+  </div>
+
+
+  <!-- JORNAL -->
+
+  <div id="endingNewspaper"
+       class="endingPage newspaper hidden">
+
+    <h1>JORNAL — EDIÇÃO EXTRA</h1>
+
+    <h2>
+      PESSOAS DESAPARECIDAS NOS ÚLTIMOS MESES
+    </h2>
+
+    <div class="newsLine"></div>
+
+    <p>
+      As autoridades continuam procurando pessoas
+      desaparecidas em circunstâncias ainda não explicadas.
+    </p>
+
+    <p>
+      Alguns dos desaparecidos foram vistos pela última vez
+      entrando em locais abandonados.
+    </p>
+
+    <div class="names">
+
+      <p>• MARCELO R.</p>
+      <p>• JULIANA S.</p>
+      <p>• ANDRÉ M.</p>
+      <p>• GABRIEL F.</p>
+      <p>• ???</p>
+
     </div>
 
-    <div id="startScreen">
-        <h1>NOCTURNA</h1>
+    <p class="finalLine">
+      Entre os nomes havia um que você reconhecia.
+    </p>
 
-        <p>
-            Clique para entrar.
-        </p>
+    <p class="finalLine">
+      O seu.
+    </p>
 
-        <button id="startButton">
-            ENTRAR
-        </button>
-    </div>
+    <button id="endingNextFake" style="display:none">
+      CONTINUAR
+    </button>
 
-    <script type="module" src="script.js"></script>
+  </div>
+
+
+  <!-- FIM -->
+
+  <div id="endingFim" class="endingPage hidden">
+
+    <h1>FIM</h1>
+
+    <p class="bigText">
+      NOCTURNA
+    </p>
+
+    <p>
+      Algumas portas foram feitas para nunca serem abertas.
+    </p>
+
+    <button id="endingRestart">
+      JOGAR NOVAMENTE
+    </button>
+
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
