@@ -3,213 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOCTURNA</title>
+
+    <title>NOCTURNA 3D</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Import Map do Three.js -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+        }
+    }
+    </script>
 </head>
 
 <body>
 
+    <div id="crosshair">+</div>
+
     <div id="hud">
-        <div>FASE <span id="phase">1</span></div>
-        <div>VIDA <span id="life">200</span></div>
+        NOCTURNA<br>
+        WASD = andar | MOUSE = olhar | ESC = sair
+    </div>
 
-        <div id="objective">
-            Prepare-se.
-        </div>
+    <div id="startScreen">
+        <h1>NOCTURNA</h1>
 
-        <button id="codesBtn">
-            CÓDIGOS
+        <p>
+            Clique para entrar.
+        </p>
+
+        <button id="startButton">
+            ENTRAR
         </button>
     </div>
 
-    <canvas id="game" width="1200" height="650"></canvas>
-
-    <!-- CÓDIGOS QUE PISCAM -->
-    <div id="codeFlash"></div>
-
-    <!-- OLHOS DA FASE 2 -->
-    <div id="eyeFlash"></div>
-
-    <!-- TELA INICIAL -->
-    <div id="startPanel" class="modal">
-
-        <div class="box">
-
-            <h1>NOCTURNA</h1>
-
-            <p>
-                Uma memória pode ser uma prisão.
-            </p>
-
-            <input
-                id="nameInput"
-                maxlength="24"
-                placeholder="Seu nome"
-            >
-
-            <button id="startBtn">
-                ENTRAR
-            </button>
-
-            <small>
-                A / D = mover<br>
-                SHIFT = correr<br>
-                ESPAÇO = pular<br>
-                S = agachar<br>
-                F = interagir<br>
-                E = atacar
-            </small>
-
-        </div>
-
-    </div>
-
-    <!-- ABA DE CÓDIGOS -->
-    <div id="codesPanel" class="modal hidden">
-
-        <div class="box">
-
-            <h2>CÓDIGOS</h2>
-
-            <p>
-                Alguns códigos aparecem na tela por apenas alguns instantes.
-            </p>
-
-            <input
-                id="codeInput"
-                maxlength="10"
-                placeholder="Digite um código"
-            >
-
-            <button id="enterCode">
-                VERIFICAR
-            </button>
-
-            <p id="codeMessage"></p>
-
-            <button id="closeCodes">
-                FECHAR
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- CÓDIGO DA PORTA -->
-    <div id="doorPanel" class="modal hidden">
-
-        <div class="box">
-
-            <h2 id="doorTitle">
-                PARABÉNS!
-            </h2>
-
-            <p id="doorText"></p>
-
-            <input
-                id="doorInput"
-                maxlength="10"
-                placeholder="CÓDIGO DA PORTA"
-            >
-
-            <button id="doorBtn">
-                AVANÇAR
-            </button>
-
-            <p id="doorMessage"></p>
-
-        </div>
-
-    </div>
-
-    <!-- GAME OVER -->
-    <div id="screenMessage" class="modal hidden">
-
-        <div class="box">
-
-            <h1 id="messageTitle"></h1>
-
-            <p id="messageText"></p>
-
-            <button id="restartBtn">
-                RECOMEÇAR
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- ESCOLHA FINAL -->
-    <div id="choicePanel" class="modal hidden">
-
-        <div class="box">
-
-            <h2>
-                VOCÊ QUER SAIR?
-            </h2>
-
-            <p>
-                A última porta está aberta.
-            </p>
-
-            <div class="choiceRow">
-                <button id="yesBtn">
-                    SIM
-                </button>
-
-                <button id="noBtn">
-                    NÃO
-                </button>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- JORNAL -->
-    <div id="newspaper" class="modal hidden">
-
-        <div class="paper">
-
-            <div class="paperDate">
-                EDIÇÃO EXTRAORDINÁRIA
-            </div>
-
-            <h1>
-                PESSOAS DESAPARECIDAS
-            </h1>
-
-            <h3>
-                POLÍCIA INVESTIGA MISTERIOSOS DESAPARECIMENTOS NOS ÚLTIMOS MESES
-            </h3>
-
-            <p>
-                As autoridades continuam procurando pessoas
-                que desapareceram sem deixar rastros.
-                Entre os nomes encontrados nos registros:
-            </p>
-
-            <div
-                id="missingList"
-                class="missingList"
-            ></div>
-
-            <p class="paperQuote">
-                "Todos desapareceram sem deixar rastros."
-            </p>
-
-            <div
-                id="paperFinal"
-                class="paperFinal"
-            >
-                FIM
-            </div>
-
-        </div>
-
-    </div>
-
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 
 </body>
 </html>
